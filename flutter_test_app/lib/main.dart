@@ -6,7 +6,9 @@ void main() {
   runApp(const MyApp());
 }
 
+/// Defines the main app widget
 class MyApp extends StatelessWidget {
+  /// Constructor with a key parameter for widget identification and management.
   const MyApp({super.key});
 
   @override
@@ -21,9 +23,12 @@ class MyApp extends StatelessWidget {
   }
 }
 
+/// Main Page of our app, which contains 2 tabs
 class HomePage extends StatefulWidget {
+  /// Title to be displayed on the app bar, passed through the constructor.
   const HomePage({required this.title, super.key,});
 
+  /// Declaration of title variable to store the app bar title.
   final String title;
 
   @override

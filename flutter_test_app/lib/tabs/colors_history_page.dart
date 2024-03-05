@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test_app/db/db_provider.dart';
 import 'package:flutter_test_app/model/color_model.dart';
 
+/// displays a history of colors stored in the database.
 class ColorsHistoryPage extends StatefulWidget {
   const ColorsHistoryPage({super.key});
 
@@ -75,6 +76,7 @@ class _ColorsHistoryPageState extends State<ColorsHistoryPage> {
   }
 }
 
+/// displays a single color item.
 class ColorListItem extends StatelessWidget {
   const ColorListItem({required this.color, super.key,});
 

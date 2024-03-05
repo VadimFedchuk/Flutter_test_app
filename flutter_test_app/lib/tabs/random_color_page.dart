@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test_app/db/db_provider.dart';
 import 'package:flutter_test_app/model/color_model.dart';
 
+/// shows a random color on the screen.
 class RandomColorPage extends StatefulWidget {
   const RandomColorPage({super.key});
 
