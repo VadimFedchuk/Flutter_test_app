@@ -31,6 +31,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
+  Key _colorsHistoryPageKey = const ValueKey("ColorsHistoryPageDefault");
   int _selectedIndex = 0;
 
   static const List<BottomNavigationBarItem> _tabs = <BottomNavigationBarItem>[
@@ -47,11 +49,18 @@ class _HomePageState extends State<HomePage> {
   void _onTabClicked(int index) {
     setState(() {
       _selectedIndex = index;
+      if (index == 1) {
+        _colorsHistoryPageKey = ValueKey("ColorsHistoryPage${DateTime.now()}");
+      }
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    final List<Widget> widgets = <Widget>[
+      const RandomColorPage(),
+      ColorsHistoryPage(key: _colorsHistoryPageKey,),
+    ];
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.deepOrangeAccent,
@@ -62,7 +71,10 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
-      body: Center(child: _provideCurrentPage(_selectedIndex)),
+      body: IndexedStack(
+        index: _selectedIndex,
+        children: widgets,
+      ),
       bottomNavigationBar: BottomNavigationBar(
         items: _tabs,
         currentIndex: _selectedIndex,
@@ -72,13 +84,5 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Colors.deepOrangeAccent,
       ),
     );
-  }
-
-  Widget _provideCurrentPage(int selectedIndex) {
-    const List<Widget> widgets = <Widget>[
-      RandomColorPage(),
-      ColorsHistoryPage(),
-    ];
-    return widgets[selectedIndex];
   }
 }
